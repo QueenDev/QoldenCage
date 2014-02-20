@@ -5,6 +5,7 @@
 package QD.goldencage.DAO;
 
 import QD.goldencage.Beans.Client;
+import QD.goldencage.Beans.Prestataire;
 import QD.goldencage.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,6 +102,28 @@ public class ClientDAO {
             return listeClient;
         } catch (SQLException ex) {
             System.out.println("erreur lors du chargement des stocks "+ex.getMessage());
+            return null;
+        }
+    }
+       
+       public Client findClientById(int id){
+    Client client = new Client();
+     String requete = "select * from client where ID=?";
+        try {
+            PreparedStatement ps = MyConnection.getInstance().prepareStatement(requete);
+            ps.setInt(1, id);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next())
+            {
+                client.setId(resultat.getInt(1));
+                client.setNom(resultat.getString(2));
+                client.setPrenom(resultat.getNString(3));
+            }
+            return client;
+
+        } catch (SQLException ex) {
+           //Logger.getLogger(PersonneDao.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("erreur lors de la recherche du depot "+ex.getMessage());
             return null;
         }
     }
