@@ -32,6 +32,11 @@ public class ReclamationPrestataire extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new ReclamationTableModel());
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -53,6 +58,15 @@ public class ReclamationPrestataire extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int id = ((Integer)jTable1.getValueAt(jTable1.getSelectedRow(),0));
+        String titre = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),1));
+        String reclamation = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),2));
+        
+        
+        new LireReclamationPrestataire(id,titre,reclamation).setVisible(true);
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
