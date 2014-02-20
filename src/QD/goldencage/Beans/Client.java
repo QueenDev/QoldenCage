@@ -98,6 +98,6 @@ public class Client {
     public String toString() {
         return "Client{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", pass=" + pass + ", adresse=" + adresse + ", email=" + email + ", tel=" + tel + ", Ville=" + Ville + ", staut=" + staut + '}';
     }
-
+// c mouadh :D
   
 }
