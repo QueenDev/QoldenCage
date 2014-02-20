@@ -90,7 +90,8 @@ public class Client {
         return prenom;
     }
 
-    public String getTel() {
+    public String getTel() 
+    {
         return tel;
     }
 
@@ -100,6 +101,8 @@ public class Client {
     }
 
 // c mouadh :D
+    
+    
   
 
 
