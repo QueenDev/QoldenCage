@@ -4,18 +4,28 @@
  */
 package QD.goldencage.gui;
 
+import java.awt.HeadlessException;
+
 /**
  *
  * @author Shift
  */
 public class Reclamation2 extends javax.swing.JFrame {
 
+   private int arch=0;
     /**
      * Creates new form Reclamation2
      */
     public Reclamation2() {
         initComponents();
     }
+
+    public Reclamation2(int arch) throws HeadlessException {
+        this.arch = arch;
+        initComponents();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,9 +44,14 @@ public class Reclamation2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel1.setText("Reclamations :");
+        jLabel1.setText("Reclamations");
 
         jButton1.setText("Reclamations des Clients");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Reclamations des Prestataires");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -52,9 +67,11 @@ public class Reclamation2 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,8 +101,28 @@ public class Reclamation2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if(arch == 0)
+        {this.setVisible(false);
+        new ReclamationPrestataire().setVisible(true);
+        }
+        else
+        {
+            //System.out.print("shift miboun");
+        this.setVisible(false);
+        new ReclamationPrestataire(1).setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(arch == 0)
+        {this.setVisible(false);
+        new ReclamationClient().setVisible(true);
+        }
+        else{
+            this.setVisible(false);
+        new ReclamationClient(1).setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

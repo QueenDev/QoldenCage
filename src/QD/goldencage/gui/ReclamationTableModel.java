@@ -17,10 +17,16 @@ public class ReclamationTableModel extends AbstractTableModel {
 
     List<Reclamation> nomReclamation;
     String[] entetes ={"ID Reclamation","Titre Prestataire","Reclamation"};
-    
+    private int arch;
     public ReclamationTableModel(){
         nomReclamation = new ReclamationDAO().DisplayAllReclamationsPresataire();
     }
+
+    public ReclamationTableModel(int arch) {
+        this.arch = arch;
+        nomReclamation = new ReclamationDAO().DisplayAllReclamationsPresataireArch();
+    }
+    
     
     public int getRowCount() {
         return nomReclamation.size();

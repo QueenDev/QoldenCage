@@ -4,18 +4,34 @@
  */
 package QD.goldencage.gui;
 
+import java.awt.HeadlessException;
+
 /**
  *
  * @author Shift
  */
 public class ReclamationClient extends javax.swing.JFrame {
 
+    private int arch=0;
     /**
      * Creates new form ReclamationClient
      */
     public ReclamationClient() {
         initComponents();
     }
+
+    public ReclamationClient(int arch) throws HeadlessException {
+        initComponents();
+        this.arch = arch;
+        jTable1 = new javax.swing.JTable();
+
+        jTable1.setModel(new ReclamationTableModelClient(1));
+
+        jScrollPane1.setViewportView(jTable1);
+
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +72,13 @@ public class ReclamationClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int id = ((Integer)jTable1.getValueAt(jTable1.getSelectedRow(),0));
+        String nom = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),1));
+        String prenom = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),2));
+        String reclamation = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),3));
         
+        
+        new LireReclamation(id,nom,prenom,reclamation).setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

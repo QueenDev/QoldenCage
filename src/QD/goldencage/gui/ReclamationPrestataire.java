@@ -4,6 +4,9 @@
  */
 package QD.goldencage.gui;
 
+import java.awt.HeadlessException;
+import javax.swing.JTable;
+
 /**
  *
  * @author Shift
@@ -13,8 +16,21 @@ public class ReclamationPrestataire extends javax.swing.JFrame {
     /**
      * Creates new form ReclamationPrestataire
      */
+    private int arch =0;
     public ReclamationPrestataire() {
         initComponents();
+    }
+
+    public ReclamationPrestataire(int arch) throws HeadlessException {
+         initComponents();
+        this.arch = arch;
+        
+        jTable1 = new javax.swing.JTable();
+
+        jTable1.setModel(new ReclamationTableModel(1));
+
+        jScrollPane1.setViewportView(jTable1);
+       
     }
 
     /**
@@ -65,7 +81,7 @@ public class ReclamationPrestataire extends javax.swing.JFrame {
         String reclamation = ((String)jTable1.getValueAt(jTable1.getSelectedRow(),2));
         
         
-        new LireReclamationPrestataire(id,titre,reclamation).setVisible(true);
+        new LireReclamation(id,titre,reclamation).setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
