@@ -22,7 +22,7 @@ public class MessagerieDAO {
 
         List<Messagerie> listemessagerie = new ArrayList<Messagerie>();
 
-        String requetecl = "select id,titre,message,date from message where clienten=true";
+        String requetecl = "select id,titre,message,date from message where presen=false";
         try {
             Statement statement = MyConnection.getInstance()
                     .createStatement();
