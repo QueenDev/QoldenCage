@@ -17,21 +17,38 @@ public class MessagerieTableModel extends AbstractTableModel {
     List<Messagerie> messagerie;
     String[] entetes ={"ID Message","Titre","Message","Date"};
     public MessagerieTableModel(String val){
-        if(val == "recu"){
+        if(val.equals("recu")){
             messagerie = new MessagerieDAO().DisplayAllMessagesRecu();
         }else{
             messagerie = new MessagerieDAO().DisplayAllMessagesEnvoye();
         }
     }
     
+    /**
+     *
+     * @return
+     */
+    @Override
     public int getRowCount() {
         return messagerie.size();
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public int getColumnCount() {
         return entetes.length;
     }
 
+    /**
+     *
+     * @param rowIndex
+     * @param columnIndex
+     * @return
+     */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex){
             case 0:
