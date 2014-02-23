@@ -16,8 +16,12 @@ import javax.swing.table.AbstractTableModel;
 public class MessagerieTableModel extends AbstractTableModel {
     List<Messagerie> messagerie;
     String[] entetes ={"ID Message","Titre","Message","Date"};
-    public MessagerieTableModel(){
-        messagerie = new MessagerieDAO().DisplayAllMessagesClient();
+    public MessagerieTableModel(String val){
+        if(val == "recu"){
+            messagerie = new MessagerieDAO().DisplayAllMessagesRecu();
+        }else{
+            messagerie = new MessagerieDAO().DisplayAllMessagesEnvoye();
+        }
     }
     
     public int getRowCount() {

@@ -20,7 +20,9 @@ public class GestionBoiteMessagerie extends javax.swing.JFrame {
         
         jTable1 = new javax.swing.JTable();
 
-        jTable1.setModel(new MessagerieTableModel());
+        jTable1.setModel(new MessagerieTableModel("recu"));
+        
+        jTable2.setModel(new MessagerieTableModel("envoye"));
 
         jScrollPane1.setViewportView(jTable1);
     }
