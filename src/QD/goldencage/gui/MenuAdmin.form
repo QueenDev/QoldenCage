@@ -103,7 +103,7 @@
                           <Component id="gescomptes" alignment="1" min="-2" pref="121" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jButton2" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton4" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="BStatistique" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jButton5" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jButton3" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                           </Group>
@@ -124,7 +124,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="BStatistique" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -173,7 +173,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gescomptesActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="BStatistique">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/ST.png"/>
@@ -183,6 +183,9 @@
                   <Dimension value="[160, 81]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BStatistiqueActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>

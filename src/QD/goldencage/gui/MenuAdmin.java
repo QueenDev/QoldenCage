@@ -4,13 +4,19 @@
  */
 package QD.goldencage.gui;
 
-import java.awt.Container;
+import QD.goldencage.util.MyConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -24,7 +30,7 @@ public class MenuAdmin extends javax.swing.JFrame {
     public MenuAdmin() {
         try {
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
-         initComponents();
+            initComponents();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -50,7 +56,7 @@ public class MenuAdmin extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         gescomptes = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BStatistique = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -80,9 +86,14 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ST.png"))); // NOI18N
-        jButton4.setToolTipText("Espace de Gestion Des Statistique");
-        jButton4.setPreferredSize(new java.awt.Dimension(160, 81));
+        BStatistique.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ST.png"))); // NOI18N
+        BStatistique.setToolTipText("Espace de Gestion Des Statistique");
+        BStatistique.setPreferredSize(new java.awt.Dimension(160, 81));
+        BStatistique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BStatistiqueActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/GM.png"))); // NOI18N
         jButton2.setToolTipText("Espace des Gestion des Mails");
@@ -99,7 +110,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addComponent(gescomptes, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(BStatistique, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -116,7 +127,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BStatistique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -208,27 +219,56 @@ public class MenuAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gescomptesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gescomptesActionPerformed
-        
-       Object source = evt.getSource();
-       if (source == gescomptes){
-          
-         JFrame f = new JFrame();
+
+        Object source = evt.getSource();
+        if (source == gescomptes) {
+
+            JFrame f = new JFrame();
             try {
                 f.add(new GestionComptes().jPanel4);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
             }
-         f.setSize(818,346);
-         f.setVisible(true);
+            f.setSize(818, 346);
+            f.setVisible(true);
 
         }
-    
-        
+
+
     }//GEN-LAST:event_gescomptesActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void BStatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BStatistiqueActionPerformed
+      
+            
+                    
+            java.util.Date utilDate = new java.util.Date("02/01/2014");
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            
+            java.util.Date utilDate2 = new java.util.Date("02/23/2014");
+            java.sql.Date sqlDate2 = new java.sql.Date(utilDate2.getTime());
+            
+            
+            HashMap D = new HashMap();
+
+            try {
+            
+                D.put("date1",sqlDate);
+                D.put("date2",sqlDate2);
+
+          
+            String report = "C:\\Users\\torjmen\\Desktop\\newV.jrxml";
+            JasperReport jasperReport = JasperCompileManager.compileReport(report);
+            JasperPrint jp = JasperFillManager.fillReport(jasperReport, D, MyConnection.getInstance());
+            JasperViewer.viewReport(jp);
+        } catch (JRException ex) {
+            Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_BStatistiqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,10 +312,10 @@ public class MenuAdmin extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BStatistique;
     private javax.swing.JButton gescomptes;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
