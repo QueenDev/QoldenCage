@@ -5,8 +5,12 @@
 package QD.goldencage.gui;
 
 import java.awt.Container;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -18,7 +22,18 @@ public class MenuAdmin extends javax.swing.JFrame {
      * Creates new form MenuAdmin
      */
     public MenuAdmin() {
-        initComponents();
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+         initComponents();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -198,7 +213,11 @@ public class MenuAdmin extends javax.swing.JFrame {
        if (source == gescomptes){
           
          JFrame f = new JFrame();
-         f.add(new GestionComptes().jPanel4);
+            try {
+                f.add(new GestionComptes().jPanel4);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MenuAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
          f.setSize(818,346);
          f.setVisible(true);
 

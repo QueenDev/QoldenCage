@@ -4,18 +4,17 @@
  */
 package QD.goldencage.gui;
 
+
 import QD.goldencage.Beans.Client;
 import QD.goldencage.Beans.Prestataire;
 import QD.goldencage.DAO.ClientDAO;
 import QD.goldencage.DAO.PrestataireDAO;
 import QD.goldencage.model.ClientTableModel;
 import QD.goldencage.model.PrestataireTableModel;
-import java.util.Vector;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 
 
 /**
@@ -32,7 +31,16 @@ public class GestionComptes extends javax.swing.JPanel  {
     /**
      * Creates new form GestionComptes
      */
-    public GestionComptes() {
+    public GestionComptes() throws ClassNotFoundException {
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+        } catch (InstantiationException ex) {
+            Logger.getLogger(GestionComptes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(GestionComptes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(GestionComptes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
    }
 

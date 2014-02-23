@@ -4,6 +4,11 @@
  */
 package QD.goldencage.gui;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author torjmen
@@ -13,8 +18,17 @@ public class Authentication extends javax.swing.JFrame {
     /**
      * Creates new form Authentication
      */
-    public Authentication() {
+    public Authentication() throws ClassNotFoundException {
         initComponents();
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Authentication.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Authentication.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Authentication.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -142,7 +156,11 @@ public class Authentication extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Authentication().setVisible(true);
+                try {
+                    new Authentication().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Authentication.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
