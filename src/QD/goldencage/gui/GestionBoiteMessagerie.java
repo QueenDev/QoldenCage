@@ -4,6 +4,8 @@
  */
 package QD.goldencage.gui;
 
+import QD.goldencage.gui.MessagerieTableModel;
+
 /**
  *
  * @author Dgeyski
@@ -15,7 +17,15 @@ public class GestionBoiteMessagerie extends javax.swing.JFrame {
      */
     public GestionBoiteMessagerie() {
         initComponents();
+        
+        jTable1 = new javax.swing.JTable();
+
+        jTable1.setModel(new MessagerieTableModel());
+
+        jScrollPane1.setViewportView(jTable1);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
