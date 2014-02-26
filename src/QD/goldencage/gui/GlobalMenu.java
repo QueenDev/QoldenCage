@@ -16,8 +16,8 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @author torjmen
  */
 public class GlobalMenu extends javax.swing.JFrame {
-        StatePanelvg sp = new StatePanelvg();
-        GestionComptes gs = new GestionComptes();
+      
+        
     /**
      * Creates new form GlobalMenu
      */
@@ -134,19 +134,21 @@ public class GlobalMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BStatistiqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BStatistiqueActionPerformed
-        this.remove(pChange);//remove the current panel being displayed
-        this.add(sp.StatPanel);//add the panel that you want to display next
-        this.validate();//this is needed to make the change work
-        this.repaint();//this will force the frame to display the new panel*/
-        pChange = sp.StatPanel;//keep track of the current panel for later removal
+        StatePanelvg sp = new StatePanelvg();
+        this.remove(pChange);
+        this.add(sp.StatPanel);
+        this.validate();
+        this.repaint();
+        pChange = sp.StatPanel;
     }//GEN-LAST:event_BStatistiqueActionPerformed
 
     private void gescomptesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gescomptesActionPerformed
-        this.remove(pChange);//remove the current panel being displayed
-        this.add(gs.jPanel4);//add the panel that you want to display next
-        this.validate();//this is needed to make the change work
-        this.repaint();//this will force the frame to display the new panel*/
-        pChange = gs.jPanel4;//keep track of the current panel for later removal
+        GestionComptes gs = new GestionComptes();
+        this.remove(pChange);
+        this.add(gs.jPanel4);
+        this.validate();
+        this.repaint();
+        pChange = gs.jPanel4;
    }//GEN-LAST:event_gescomptesActionPerformed
 
     /**
